@@ -2,6 +2,8 @@
 
 An AI-powered scheduling assistant for a Pokemon Training Center. Trainers interact with a chatbot that understands natural language, classifies intents, and manages lesson enrollments, bookings, cancellations, and recommendations — all orchestrated through a LangGraph state machine and powered by LLMs via OpenRouter.
 
+[Watch the demo](https://drive.google.com/file/d/1_SE-v1x9aM1Sc9r6wTxj1P7zxxmDfgkn/view?usp=sharing)
+
 ## Table of Contents
 
 - [Architecture Overview](#architecture-overview)
