@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0F0F23;
+  --bg-secondary: #1E1C35;
+  --bg-card: #27273B;
+  --primary: #7C3AED;
+  --primary-light: #A78BFA;
+  --accent: #F43F5E;
+  --accent-hover: #E11D48;
+  --neon-blue: #0080FF;
+  --neon-pink: #FF006E;
+  --neon-cyan: #00FFFF;
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --border: #4C1D95;
+  --muted: #27273B;
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-main: var(--border);
+  --color-muted: var(--muted);
+  --font-heading: 'Fredoka', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-pixel: 'Press Start 2P', cursive;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+/* Neon glow utility */
+.neon-glow {
+  text-shadow: 0 0 7px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 21px var(--neon-cyan);
+}
+
+.neon-glow-pink {
+  text-shadow: 0 0 7px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 21px var(--neon-pink);
+}
+
+.neon-box {
+  box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), inset 0 0 5px rgba(124, 58, 237, 0.1);
+}
+
+/* CRT scanline overlay */
+.crt-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Pixelated image rendering */
+.pixelated {
+  image-rendering: pixelated;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

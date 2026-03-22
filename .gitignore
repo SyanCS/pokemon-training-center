@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+*.db
+*.db-journal
+.playwright-mcp/
+.claude/
+__pycache__/

@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model PokemonStudent {
+  id        Int       @id @default(autoincrement())
+  species   String
+  nickname  String
+  types     String // comma-separated: "water" or "water,ice"
+  pokeApiId Int
+  spriteUrl String?
+  bookings  Booking[]
+
+  @@unique([species, nickname])
+}
+
+model LessonCategory {
+  id           Int      @id @default(autoincrement())
+  name         String   @unique
+  description  String   @default("")
+  allowedTypes String // comma-separated: "water" or "normal,rock,fighting"
+  lessons      Lesson[]
+}
+
+model Instructor {
+  id          Int      @id @default(autoincrement())
+  name        String
+  specialties String // comma-separated category IDs
+  spriteUrl   String?
+  lessons     Lesson[]
+}
+
+model Lesson {
+  id           Int            @id @default(autoincrement())
+  categoryId   Int
+  instructorId Int
+  datetime     DateTime
+  maxCapacity  Int            @default(3)
+  category     LessonCategory @relation(fields: [categoryId], references: [id])
+  instructor   Instructor     @relation(fields: [instructorId], references: [id])
+  bookings     Booking[]
+}
+
+model Booking {
+  id        Int            @id @default(autoincrement())
+  studentId Int
+  lessonId  Int
+  status    String         @default("booked")
+  createdAt DateTime       @default(now())
+  student   PokemonStudent @relation(fields: [studentId], references: [id])
+  lesson    Lesson         @relation(fields: [lessonId], references: [id])
+}
